@@ -509,28 +509,81 @@ class TriangleChecker:
 
 # 20. декоратор считает время выполнения функции - с помощью класса
 
-import time
-class calculate_func_time:
-    def __init__(self, func):
-        self.func = func
-
-    def __call__(self, *args, **kwargs):
-        t1 = time.time()
-        result = self.func(*args, **kwargs)
-        t2 = time.time()
-        print(f'{t2 - t1}')
-        return result
-
-@calculate_func_time
-def foo():
-    time.sleep(1)
-    print('Hello')
-
-foo = calculate_func_time(foo)
-foo()
-
-
+# import time
+# class calculate_func_time:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, *args, **kwargs):
+#         t1 = time.time()
+#         result = self.func(*args, **kwargs)
+#         t2 = time.time()
+#         print(f'{t2 - t1}')
+#         return result
+#
+# @calculate_func_time
+# def foo():
+#     time.sleep(1)
+#     print('Hello')
+#
+# foo = calculate_func_time(foo)
+# foo()
 
 
+# 21. декоратор считает время выполнения
+#
+# from functools import wraps
+# import time
+#
+# def calc_time(func):
+#     @wraps(func)
+#     def inner(a, b):
+#         time1 = time.time()
+#         result = func(a, b)
+#         time2 = time.time()
+#         total_time = time2 - time1
+#         # print(total_time)
+#         return total_time
+#     return inner
+#
+#
+# @calc_time
+# def add(a, b):
+#
+#     """dhgdkl"""
+#     sum = a + b
+#     return sum
+#
+#
+# # print(add(4, 5))
+# #
+# print(add.__name__)
+# print(add.__doc__)
 
+
+# 22. замыкание
+
+
+# def adder(value):
+#     def inner(a):
+#         sum = a + value
+#         return sum
+#
+#     return inner
+#
+# b = adder(2)
+# print(b(3))
+
+# def counter():
+#     count = 0
+#     def inner():
+#         nonlocal count
+#         count += 1
+#         return print(count)
+#
+#     return inner
+#
+# c = counter()
+# c()
+# c()
 

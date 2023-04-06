@@ -395,5 +395,3 @@
 # c = list(set(a).intersection(set(b)))
 # print(c)
 
-
-
