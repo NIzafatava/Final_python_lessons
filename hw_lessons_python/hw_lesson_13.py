@@ -13,38 +13,39 @@
 import random
 
 class Iterator:
-    def __init__(self, start_num: int, last_num: int = None):
+    def __init__(self, start_num: int, last_num: int, stop_number: int = None):
         self.start_num = start_num
         self.last_num = last_num
+        self.stop_number = stop_number
 
     def __next__(self):
-        if self.last_num is not None and self.start_num > self.last_num:
-            raise StopIteration
         result = random.randint(self.start_num, self.last_num)
+        if result == self.stop_number:
+            raise StopIteration
         return result
 
     def __iter__(self):
         return self
 
 
-my_iterator = Iterator(3, 100)
+my_iterator = Iterator(3, 9, 9)
 for num in my_iterator:
     print(num)
-    if num == 9:
-        break
 
+
+#############
 # через функцию-генератор
 
 
-def generator(start_num: int, end_num: int = None):
+def generator(start_num: int, end_num: int, stop_number: int = None):
     while True:
-        if end_num is not None and start_num >= end_num:
+        result = random.randint(start_num, end_num)
+        if end_num == stop_number:
             break
-        yield random.randint(start_num, end_num)
+        yield result
 
 
-my_generator = generator(7, 15)
+my_generator = generator(7, 15, 14)
 for num in my_generator:
     print(num)
-    if num == 9:
-        break
+
