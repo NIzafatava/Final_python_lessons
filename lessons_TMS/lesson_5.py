@@ -137,15 +137,15 @@
 #     if numbers ==[]:
 #         return None
 #
-#
-#     min = numbers[0]
-#     for num in numbers:
-#         if num < min:
-#             min = num
-#     return min
-#
-#
-# print(min_number([55, 88, 7, -10]))
+
+    min = numbers[0]
+    for num in numbers:
+        if num < min:
+            min = num
+    return min
+
+
+print(min_number([55, 88, 7, -10]))
 
 
 # Написать функцию которая печатает числа от 0 до n, n - параметр.
