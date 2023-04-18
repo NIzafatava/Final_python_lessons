@@ -1,3 +1,5 @@
+import itertools
+
 9# https://amankharwal.medium.com/130-python-projects-with-source-code-61f498591bb
 
 # 1 Number Guessing Game
@@ -95,7 +97,7 @@
 
 #9 проверка на палиндром
 
-# string = 'нежен'
+string = 'нежен'
 #
 # left_index = 0
 # right_index = len(string) - 1
@@ -106,7 +108,23 @@
 #         print(False)
 # else:
 #     print(True)
-
+#
+# half = int(len(string)/2)
+#
+# first_str = string[:half]
+# second_str = string[half:]
+#
+# if first_str == second_str:
+#     print('symmetrical')
+# else:
+#     print('not symmetrical')
+#
+# if string == string[::-1]:
+#     print('palindrome')
+# else:
+#     print('not palindrome')
+#
+#
 
 # 10. дан словарь, создать новый словарь, поменяв местами ключ и значение.
 
@@ -342,19 +360,19 @@ from dataclasses import dataclass
 # – Жаль, но из этого треугольник не сделать.
 
 
-class TriangleChecker:
-    def __init__(self, sides):
-        self.sides = sides
-
-    def is_triangle(self):
-        if all(isinstance(side, (int, float)) for side in self.sides):
-            if all(side > 0 for side in self.sides):
-                sorted_sides = sorted(self.sides)
-                if sorted_sides[0] + sorted_sides[1] > sorted_sides[2]:
-                    return 'Ура, можно построить треугольник!'
-                return 'Жаль, но из этого треугольник не сделать'
-            return 'С отрицательными числами ничего не выйдет!'
-        return 'Нужно вводить только числа!'
+# class TriangleChecker:
+#     def __init__(self, sides):
+#         self.sides = sides
+#
+#     def is_triangle(self):
+#         if all(isinstance(side, (int, float)) for side in self.sides):
+#             if all(side > 0 for side in self.sides):
+#                 sorted_sides = sorted(self.sides)
+#                 if sorted_sides[0] + sorted_sides[1] > sorted_sides[2]:
+#                     return 'Ура, можно построить треугольник!'
+#                 return 'Жаль, но из этого треугольник не сделать'
+#             return 'С отрицательными числами ничего не выйдет!'
+#         return 'Нужно вводить только числа!'
 
 
 
@@ -587,3 +605,451 @@ class TriangleChecker:
 # c()
 # c()
 
+# 23. рекурсия, фибоначчи
+# def fib(x):
+#     if x == 1:
+#         return 0
+#     if x == 2:
+#         return 1
+#     return fib(x - 1) + fib(x - 2)
+#
+# print(fib(5))
+
+# 24.проверка строки с помощью регул выражения
+
+# test_cases = [
+#     '1', '-1', '0.1', '-0.1', '.1', '-.1', '0',
+#     'a', '', '1a', '--1', '1-', '1..1', '0.1a', '12 12', '-a12', '..1', '-..'
+# ]
+#
+# import re
+#
+# positive_int_re = re.compile(r'^\d+$')
+# positive_float_re = re.compile(r'^\d*\.\d*$')
+# negative_int_re = re.compile(r'^-\d+$')
+# negative_float_re = re.compile(r'^-\d*\.\d*$')
+#
+# def analyze_str(num: str) -> int | float | None:
+#     if positive_int_re.match(num):
+#         number = int(num)
+#         num_info = 'полож целое'
+#     elif negative_int_re.match(num):
+#         number = int(num)
+#         num_info = 'отриц целое'
+#     elif positive_float_re.match(num):
+#         number = float(num)
+#         num_info= 'полож дробное'
+#     elif  negative_float_re.match(num):
+#         number = float(num)
+#         num_info = 'отриц дробное'
+#     else:
+#         print('невалидное')
+#         return
+#     print(f'{number}: {num_info}')
+#     return number
+#
+# print([analyze_str(num) for num in test_cases])
+
+# 25. вставить пробелы
+
+# import re
+#
+# a = ['myNameIsNastya', 'NastyaIz']
+#
+# res = [re.sub(r'(\w)([A-Z])', r'\1 \2', ele) for ele in a]
+# print(res)
+
+
+# 26. сделать заглавными первуюи посл букву в словах
+#
+# a = 'Hello my dear world'
+# b = a.split(' ')
+# print(b)
+#
+# res = []
+# for i in b:
+#     c = i[0].upper()+i[1:-1]+i[-1].upper()
+#     res.append(c)
+#     e = ' '.join(res)
+#
+# print(res)
+# print(e)
+
+# 27.
+# Count the Number of matching characters in a pair of string
+
+
+# str1 = 'aabcdef'
+# str2 = 'defghia'
+#
+# set_str1 = set(str1)
+# set_str2 = set(str2)
+# set_str1_1 = set_str1.intersection(set_str2)
+# print(set_str1_1)
+# print(len(set_str1_1))
+
+# 28. Least Frequent Character in String
+
+# from collections import Counter
+# # test_str = 'aaahgggdaz;'
+# #
+# res = Counter(test_str)
+# print(min(res, key=res.get))
+
+# 29. анаграмы
+
+# a = 'fgc'
+# b = 'gfc'
+# print(Counter(a) == Counter(b))
+
+# 30. close matches
+
+# from difflib import get_close_matches
+#
+# a = ['ape', 'ap', 'fowhf', 'applou']
+# b = 'apple'
+# c = get_close_matches(b, a)
+# print(c)
+
+# 31. reverse
+#
+# list_ = 'nasty like'
+# b = ''.join(sorted(list_, reverse=False))
+# print(b)
+
+# 32. String slicing in Python to check if a string can become empty by recursive deletion
+
+# def checkEmpty(input, pattern):
+#     # If both are empty
+#     if len(input) == 0 and len(pattern) == 0:
+#         return 'true'
+#
+#     # If only pattern is empty
+#     if len(pattern) == 0:
+#         return 'false'
+#
+#     while (len(input) != 0):
+#
+#         # find sub-string in main string
+#         index = input.find(pattern)
+#
+#         # check if sub-string founded or not
+#         if (index == (-1)):
+#             return 'false'
+#
+#         # slice input string in two parts and concatenate
+#         input = input[0:index] + input[index + len(pattern):]
+#     return 'true'
+#
+#
+# print(checkEmpty('NasNastyatya','Sasha'))
+# print(checkEmpty('NasNastyatyaa','Nastya'))
+# print(checkEmpty('NasNastyatya','Nastya'))
+
+# 33. заменить слова другим
+
+# test_str = 'Geeksforgeeks is best for geeks and CS'
+# word_list = ["best", 'CS', 'for']
+# repl_wrd = 'gfg'
+#
+# result = ' '.join([repl_wrd if word in word_list else word for word in test_str.split(' ')])
+# print(result)
+
+# 34.  Replace Different characters in String at Once
+# test_str = 'geeksforgeeks is best'
+# map_dict = {'e': '1', 'b': '6', 'i': '4'}
+# result = ''.join([map_dict[key] if key in map_dict else key for key in test_str])
+# print(result)
+
+# 35.Ways to convert string to dictionary
+
+# str1 = "Jan, Feb, March"
+# str2 = "January | February | March"
+#
+# keys = str1.split(',')
+# values = str2.split('|')
+#
+#
+# dictionary = {}
+# for i in range(len(keys)):
+#     dictionary[keys[i]] = values[i]
+#
+# print(dictionary)
+
+# 36. размер tuple
+# import sys
+#
+# tuple1 = (2, 53, 441,)
+# tuple2 = ('fsaf', 2, 'fwf')
+#
+# print(tuple1.__sizeof__())
+# print(sys.getsizeof(tuple1))
+
+# 37. Python program to create a list of tuples from given list having number and its cube in each tuple
+
+# list_ = [1, 2, 3]
+#
+# print(tuple(list_))
+#
+# list2 = []
+#
+# for i in list_:
+#     a = i**2
+#     list2.append(a)
+#
+# print(list2)
+#
+# b = tuple(zip(list_, list2))
+# print(b)
+
+# 38. Multiply Adjacent elements
+
+# test_tup = (1, 5, 7, 8, 10)
+#
+# result = [i * j for i, j in zip(test_tup, test_tup[1:])]
+# print(result)
+
+# 39. Update each element in tuple list
+# test_list = [(1, 3, 4), (2, 4, 6), (3, 8, 1)]
+# add_el = 4
+#
+# result = [tuple(((i + add_el) for i in j)) for j in test_list]
+# print(result)
+
+# 40. All pair combinations of 2 tuples
+# import itertools
+#
+# test_tuple1 = (7, 2)
+# test_tuple2 = (7, 8)
+# test_tuple3 = test_tuple2 +test_tuple1
+# print(tuple(itertools.permutations(test_tuple3, 2)))
+
+# 41. Remove Tuples from the List having every element as None
+#
+# test_list = [(None, 2), (None, None), (3, 4), (12, 3), (None, )]
+#
+# result = [sub for sub in test_list if not all(ele == None for ele in sub)]
+# print(result)
+
+# 42. Python program to sort a list of tuples by second Item
+
+# a = [('for', 24), ('Geeks', 8), ('Geeks', 30)]
+# result = sorted(a, key=lambda x: x[1])
+# print(result)
+
+# 43.  Python program to find tuples which have all elements divisible by K from a list of tuples
+
+# test_list = [(6, 24, 12), (60, 12, 6), (12, 18, 21)]
+# k = 6
+#
+# result = [ele for ele in test_list if all(i % k == 0 for i in ele)]
+# print(result)
+
+# 44. Python program to find Tuples with positive elements in List of tuples
+
+# test_list = [(4, 5, 9), (-3, 2, 3), (-3, 5, 6), (4, -6)]
+#
+# # 1 способ
+# result = [i for i in test_list if all(j > 0 for j in i)]
+# print(result)
+#
+# # 2 способ
+#
+# result2 = list(filter(lambda sub: all(ele > 0 for ele in sub), test_list))
+# print(result2)
+
+# 45.  Extract digits from Tuple list
+
+# test_list = [(15, 3), (3, 9)]
+# result = [list(i for i in sub) for sub in test_list]
+# print(result)
+
+# 46. Flatten Tuples List to String
+# import itertools
+# test_list = [('1', '4', '6'), ('5', '8'), ('2', '9'), ('1', '10')]
+#
+#
+#
+# res = ' '.join(itertools.chain(*test_list))
+# print(res)
+
+# 47. Python program to convert tuple into list by adding the given string after every element
+#
+# test_tup = (5, 6, 7)
+# k = "Gfg"
+#
+# list = list(map(lambda x: [x, k], test_tup))
+# list = [i for j in list for i in j]
+# print(list)
+
+# 48. Convert Tuple to Tuple Pair
+
+# from itertools import product
+#
+# test_tuple = ('G', 'F', 'G')
+# test_tuple = iter(test_tuple)
+# result = list(product(next(test_tuple), test_tuple))
+# print(result)
+
+# 49.  Convert Tuple Matrix to Tuple List
+# test_list = [[(4, 5), (7, 8)], [(10, 13), (18, 17)], [(0, 4), (10, 1), (4, 3)]]
+# temp = [ele for sub in test_list for ele in sub]
+# # print(temp)
+# temp1 = list(zip(*temp))
+# print(temp1)
+
+# 50. Extract tuples having K digit elements
+#
+# test_list = [(54, 2), (34, 55), (222, 23), (12, 45), (78, )]
+# k = 2
+#
+# result = [sub for sub in test_list if all(e != 2 for e in sub)]
+# print(result)
+
+# 51. Sort Tuples by their Maximum element
+
+# test_list = [(4, 5, 5, 7), (1, 3, 7, 4), (19, 4, 5, 3), (1, 2)]
+#
+# result = sorted(test_list, key=lambda x:max(x),reverse=True)
+# print(result)
+
+# 52.Concatenated string with uncommon characters in Python
+# S1 = 'aacdb'
+# S2 = 'gafd'
+#
+# diff1= ''.join(set(S1).difference(set(S2)).union(set(S2).difference(set(S1))))
+# print(diff1)
+
+# 53. Find all duplicate characters in string
+
+# a = 'hello'
+#
+# def find_dupl(str):
+#     dict_ = {}
+#     for i in str:
+#         if i not in dict_:
+#             dict_[i] = 1
+#         else:
+#             dict_[i] += 1
+#
+#     dupl = []
+#     for i, count in dict_.items():
+#         if count > 1:
+#             dupl.append(i)
+#
+#     return dupl
+#
+# print(find_dupl(a))
+
+# 54. Dictionary and counter in Python to find winner of election
+
+# from collections import Counter
+#
+# votes = ["john", "johnny", "jackie", "johnny", "john", "jackie", "jamie", "jamie", "john", "johnny", "jamie", "johnny","john"]
+#
+# dict_ = Counter(votes)
+# print(dict_)
+#
+# max_votes = max(dict_.values())
+# lst = [i for i in dict_.keys() if dict_[i] == max_votes]
+# print(lst)
+
+# 55. Ways to sort list of dictionaries by values in Python – Using lambda function
+
+# list = [{"name": "Nandini", "age": 20},
+#        {"name": "Manjeet", "age": 20},
+#        {"name": "Nikhil", "age": 19}]
+#
+# print(sorted(list, key=lambda i: i['age']))
+# print(sorted(list, key=lambda i: (i['age'], i['name'])))
+# print(sorted(list, key=lambda i: i['age'], reverse=True))
+#
+# 56. Python program to find the sum of all items in a dictionary
+#
+# a =  {'a': 100, 'b':200, 'c':300}
+# sum_ = sum(a.values())
+# print(sum_)
+#
+# sum_ = 0
+# for key, value in a.items():
+#     sum_ += value
+# print(sum_)
+
+# 57. Group Similar items to Dictionary Values List
+
+test_list = [4, 6, 6, 4, 2, 2, 4, 8, 5, 8]
+
+from collections import defaultdict, Counter
+
+# result = defaultdict(list)
+# # print(result)
+# for ele in test_list:
+#     result[ele].append(ele)
+#
+# print(str(dict(result)))
+
+# result = {key: [key] * val for key, val in Counter(test_list).items()}
+# print(result)
+
+# 58. replace words
+
+# test_str = 'geekforgeeks best for geeks'
+#
+# lookp_dict = {"best": "good and better", "geeks": "all CS aspirants"}
+#
+# print(lookp_dict.get('best'))
+# res = ' '.join((lookp_dict.get(ele, ele) for ele in test_str.split()))
+#
+# print(res)
+
+# 59.  Convert List to List of dictionaries
+
+# test_list = ['Gfg', 3, 'is', 8]
+# key_list = ['name', 'id']
+#
+# result = [{key_list[0]: test_list[i], key_list[1]: test_list[i+1]} for i in range(0, len(test_list),2)]
+# print(result)
+
+# 60. Convert List of Dictionaries to List of Lists
+
+# test_list = [{'Gfg': 123, 'best': 10}, {'Gfg': 51, 'best': 7}]
+#
+# # [[‘Gfg’, ‘best’], [123, 10], [51, 7]]
+#
+# res = [[key for key in test_list[0].keys()], *[list(idx.values()) for idx in test_list ] ]
+#
+# #
+# print(res)
+
+# 61. Lambda Function to Check if value is in a List
+# L = [1, 2, 3, 3, 5]
+# x = 4
+#
+# result = lambda x, L: 'true' if x in L else 'false'
+# print(result(x, L))
+
+# 62.Get index in the list of objects by attribute in Python
+
+
+# class X:
+#     def __init__(self, val):
+#         self.val = val
+#
+#
+# def getIndex(li, target):
+#     for index, x in enumerate(li):
+#         if x.val == target:
+#             return index
+#     return -1
+#
+#
+# # Driver code
+# li = [1, 2, 3, 4, 5, 6]
+#
+# # Converting all the items in
+# # list to object of class X
+# a = list()
+# for i in li:
+#     a.append(X(i))
+#
+# print(getIndex(a, 3))

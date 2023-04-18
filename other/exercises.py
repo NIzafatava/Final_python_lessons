@@ -1,6 +1,6 @@
 # https://www.w3resource.com/python-exercises/python-basic-exercises.php
 # https://www.practicepython.org/
-
+# https://www.geeksforgeeks.org/python-exercises-practice-questions-and-solutions/
 
 # 1. функция repr
 
@@ -394,4 +394,140 @@
 # b = set(b)
 # c = list(set(a).intersection(set(b)))
 # print(c)
+
+
+# 14. очистить список
+
+# a = [1, 6, 0]
+# b = [3, 6]
+# c = [6.2, 8, 6]
+#
+# print(a)
+# print(b)
+# print(c)
+#
+# del a[:]
+# b.clear()
+#
+# d = c.pop()
+# print(d)
+# print(d)
+#
+# print(a)
+# print(b)
+# print(c)
+
+# 15. list cloning
+
+# lst = [1, 8, 7]
+#
+# def clone(lst):
+#     lst_clone = lst[:]
+#     return lst_clone
+#
+# print(clone([4, 7, 9]))
+#
+#
+# def clone2(lst):
+#     lst2 = []
+#     lst2.extend(lst)
+#     return lst2
+#
+#
+# print(clone2([35, 29]))
+#
+# import copy
+#
+# list_ = [5, 7, 2]
+# list3 = copy.copy(list_)
+# print(list3)
+#
+# list__= [1, 5, 6]
+# l = len(list__)
+# list__copy = list__[slice(l)]
+# print(list__copy)
+
+# 16. find smallest
+
+# list_ = [5, 8, 1]
+# # min_el = min(list_, key=lambda x: int(x))
+# # print(min_el)
+#
+# list_.sort()
+# print(list_[0])
+
+# 17. дубликаты
+
+# def dupl(list_):
+#     new_dict = {}
+#     new_list = []
+#
+#     for i in list_:
+#         if i not in new_dict:
+#             new_dict[i] = 1
+#         else:
+#             new_dict[i] += 1
+#
+#     for key, values in new_dict.items():
+#         if values >= 1:
+#             new_list.append(key)
+#
+#     return new_list
+#
+# print(dupl([2, 2, 6, 8, 9, 6]))
+
+
+# 18. убрать пустой лист из листов
+
+# list_ = [[], [2,3], [6, 0], []]
+#
+# list2 = [ i for i in list_ if i != []]
+# print(list2)
+#
+# list3 = list(filter(lambda x: x!= [], list_))
+# print(list3)
+
+# 19. преобразовать список в словарь
+
+# list_ = ['An', 32, 'Olya', 16, 'Nastya', 25]
+# key_list = ['name', 'age']
+#
+# # result  = [{key_list[i]: val for i, val in enumerate(pair)} for pair in zip(list_[::2], list_[1::2])]
+# # print(list_[::2])
+# # print(list_[1::2])
+# # print(result)
+#
+# l = len(list_)
+# result = []
+#
+# for i in range(0, l, 2):
+#     result.append({key_list[0]: list_[i], key_list[1]: list_[i + 1]})
+#
+# print(result)
+
+# 20. выбрать рандомное число из списков в списке
+
+# import itertools
+# import random
+# list_ = [[2,5], [9, 0]]
+# list_1 = list(itertools.chain.from_iterable(list_))
+# print(list_1)
+# list_choice = random.choice(list_1)
+# print(list_choice)
+
+
+# 21. написать генератор который работает как enumerate
+
+# from typing import Iterator
+# def gen_enum(list_: list, start_index: int = None) -> Iterator[tuple]:
+#     index = start_index
+#     for i in list_:
+#         yield index, i
+#         index += 1
+#
+#
+# a = ['a', 'f', 's', 'l']
+#
+# for i in gen_enum(a, 1):
+#     print(i)
 

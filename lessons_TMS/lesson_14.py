@@ -10,5 +10,6 @@ def gen_enum(list_: list):
 
 a = ['a', 'f', 's', 'l']
 print(next(gen_enum(a)))
+print(next(gen_enum(a)))
 
 
